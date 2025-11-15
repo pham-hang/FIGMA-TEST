@@ -1,113 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    
-    <!-- Preload Manrope font for better performance -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <title>Web Experience</title>
-  </head>
-  <body>
-    <div class="WEB-fixed">
-      <!-- Introduction 1 -->
-      <div class="scene-container scene-introdution">
-        <img class="scene-background" src="img/Introduction/BG/Background.png" alt="Introduction scene" />
-        <div class="component" id="scene-introdution-component">
-          <img class="vector-element vector-1" src="img/Introduction/title/title_T.png" alt="letter T" />
-          <img class="vector-element vector-5" src="img/Introduction/title/title_R.png" alt="Letter R" />
-          <img class="vector-element vector-2" src="img/Introduction/title/title_A.png" alt="letter A" />
-          <img class="vector-element vector-3" src="img/Introduction/title/title_N.png" alt="Letter N" />
-          <img class="vector-element vector-4" src="img/Introduction/title/title_S.png" alt="Letter S" />
-          <img class="vector-element vector-9" src="img/Introduction/title/title_F.png" alt="Letter F" />
-          <img class="vector-element vector-7" src="img/Introduction/title/title_O.png" alt="Letter O" />
-           <img class="vector-element vector-6" src="img/Introduction/title/title_R2.png" alt="Letter R2" />
-          <img class="vector-element vector-8" src="img/Introduction/title/title_M.png" alt="letter M" />
-          
-        </div>
-      </div>
 
-      
-      <!--  Scene 1 -->
-      <img class="scene-background" src="img/Scene 1/scene 1.png" alt="Scene 1 background" />
-      
-      <!-- Scene 2 -->
-      <div class="scene-container">
-        <img class="scene-background" src="img/Scene 2/Scene 2.png" alt="Scene 2 background" />
-        
-        <div class="text-block text-block-1">
-          <p class="text-content">Nhưng rồi đến một ngày</p>
-        </div>
-        
-        <div class="text-block text-block-2">
-          <p class="text-content">Cảm thấy mình chơi vơi</p>
-        </div>
-        
-        <div class="text-block text-block-3">
-          <p class="text-content">Trong lòng đầy bão tố</p>
-        </div>
-        
-        <div class="text-block text-block-4">
-          <p class="text-content">Mắc kẹt giữa dòng đời</p>
-        </div>
-      </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+
+  <!-- Preload Manrope font for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <title>Web Experience</title>
+</head>
+
+<body>
+  <div class="WEB-fixed">
+    <!-- Introduction 1 -->
+    <div class="scene-container scene-introdution">
+      <img class="scene-background" src="img/Introduction/BG/Background.png" alt="Introduction scene" />
+      <div class="component" id="scene-introdution-component">
+        <img class="vector-element vector-1" src="img/Introduction/title/title_T.png" alt="letter T" />
+        <img class="vector-element vector-5" src="img/Introduction/title/title_R.png" alt="Letter R" />
+        <img class="vector-element vector-2" src="img/Introduction/title/title_A.png" alt="letter A" />
+        <img class="vector-element vector-3" src="img/Introduction/title/title_N.png" alt="Letter N" />
+        <img class="vector-element vector-4" src="img/Introduction/title/title_S.png" alt="Letter S" />
+        <img class="vector-element vector-9" src="img/Introduction/title/title_F.png" alt="Letter F" />
+        <img class="vector-element vector-7" src="img/Introduction/title/title_O.png" alt="Letter O" />
+        <img class="vector-element vector-6" src="img/Introduction/title/title_R2.png" alt="Letter R2" />
+        <img class="vector-element vector-8" src="img/Introduction/title/title_M.png" alt="letter M" />
 
       </div>
-      
-      <!-- Scene 3 -->
-      <div class="scene-container scene-3">
-        <img class="scene-background" src="img/Scene 3/scene 3.png" alt="Scene 3 background" />
-        <div class="close-button">
-          <div class="close-text">CLOSE !</div>
-        </div>
+    </div>
+
+
+    <!--  Scene 1 -->
+    <img class="scene-background" src="img/Scene 1/scene 1.png" alt="Scene 1 background" />
+
+    <!-- Scene 2 -->
+    <div class="scene-container">
+      <img class="scene-background" src="img/Scene 2/Scene 2.png" alt="Scene 2 background" />
+
+      <div class="text-block text-block-1">
+        <p class="text-content">Nhưng rồi đến một ngày</p>
       </div>
-      
-      <!-- Scene 4 - Rain Effect -->
-      <div class="scene-4">
-        <div class="scene-4-image"></div>
-        <div class="rain-container" id="rain-container"></div>
+
+      <div class="text-block text-block-2">
+        <p class="text-content">Cảm thấy mình chơi vơi</p>
       </div>
-      
-<!-- Scene 5 - Interactive Draggable Gallery -->
-<div class="gallery-container">
-  <div class="gallery-grid" id="gallery-grid">
-    <div class="gallery-item" data-correct-position="0">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-01@2x.png" alt="Gallery image 1" draggable="false" />
+
+      <div class="text-block text-block-3">
+        <p class="text-content">Trong lòng đầy bão tố</p>
+      </div>
+
+      <div class="text-block text-block-4">
+        <p class="text-content">Mắc kẹt giữa dòng đời</p>
+      </div>
     </div>
-    <div class="gallery-item" data-correct-position="1">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-02@2x.png" alt="Gallery image 2" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="2">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-03@2x.png" alt="Gallery image 3" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="3">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-04@2x.png" alt="Gallery image 4" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="4">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-05@2x.png" alt="Gallery image 5" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="5">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-06@2x.png" alt="Gallery image 6" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="6">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-07@2x.png" alt="Gallery image 7" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="7">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-08@2x.png" alt="Gallery image 8" draggable="false" />
-    </div>
-    <div class="gallery-item" data-correct-position="8">
-      <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-09@2x.png" alt="Gallery image 9" draggable="false" />
+
+  </div>
+
+  <!-- Scene 3 -->
+  <div class="scene-container scene-3">
+    <img class="scene-background" src="img/Scene 3/scene 3.png" alt="Scene 3 background" />
+    <div class="close-button">
+      <div class="close-text">CLOSE !</div>
     </div>
   </div>
-  <div class="gallery-success-message">Puzzle Solved!</div>
-</div>
 
+  <!-- Scene 4 - Rain Effect -->
+  <div class="scene-4">
+    <div class="scene-4-image"></div>
+    <div class="rain-container" id="rain-container"></div>
+  </div>
 
+  <!-- Scene 5 - Interactive Draggable Gallery -->
+  <div class="gallery-container">
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-item" data-correct-position="0">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-01@2x.png" alt="Gallery image 1"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="1">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-02@2x.png" alt="Gallery image 2"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="2">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-03@2x.png" alt="Gallery image 3"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="3">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-04@2x.png" alt="Gallery image 4"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="4">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-05@2x.png" alt="Gallery image 5"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="5">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-06@2x.png" alt="Gallery image 6"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="6">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-07@2x.png" alt="Gallery image 7"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="7">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-08@2x.png" alt="Gallery image 8"
+          draggable="false" />
+      </div>
+      <div class="gallery-item" data-correct-position="8">
+        <img class="gallery-image" src="https://c.animaapp.com/3CWDI9gU/img/artboard-1-09@2x.png" alt="Gallery image 9"
+          draggable="false" />
+      </div>
     </div>
-  </body>
+    <div class="gallery-success-message">Puzzle Solved!</div>
+  </div>
+
+
+  </div>
+</body>
+
 </html>

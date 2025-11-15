@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Base Styles and Reset
+   Font Imports and Typography
    ========================================================================== */
 
-/* Import fonts */
-@import url("https://fonts.googleapis.com/css?family=Poppins:400");
+/* Import Manrope with multiple weights for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 
 /* Custom font */
@@ -11,6 +11,10 @@
   font-family: "Impact-Regular";
   src: url("https://anima-uploads.s3.amazonaws.com/projects/6247dc035a1f4749cec51e2c/fonts/impact.ttf") format("truetype");
 }
+
+/* ==========================================================================
+   Base Styles and Reset
+   ========================================================================== */
 
 /* Base styles */
 *, *::before, *::after {
@@ -22,7 +26,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 img {
@@ -33,6 +37,19 @@ img {
 
 a {
   text-decoration: none;
+}
+
+/* Ensure all text elements use Manrope */
+.text-content, 
+.close-text,
+p, 
+h1, h2, h3, h4, h5, h6,
+button,
+input,
+textarea,
+select,
+.text-block {
+  font-family: 'Manrope', sans-serif;
 }
 
 /* Accessibility focus styles */
@@ -52,6 +69,7 @@ button:focus-visible, a:focus-visible {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  font-size: 0; /* This prevents inline element spacing */
 }
 
 /* ==========================================================================
@@ -63,7 +81,10 @@ button:focus-visible, a:focus-visible {
   width: 100%;
   position: relative;
   background-color: #ffffff;
-  margin-bottom: 20px;
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  line-height: 0; /* Remove line height spacing */
+  display: block; /* Ensure block display */
 }
 
 /* Scene images */
@@ -71,14 +92,24 @@ button:focus-visible, a:focus-visible {
   width: 100%;
   height: auto;
   object-fit: cover;
+  display: block; /* Ensure block display */
+  margin: 0; /* Remove margin */
+  vertical-align: bottom; /* Remove potential inline spacing */
+}
+
+/* Reset font-size for text content */
+.text-block, .close-button, .component {
+  font-size: 16px; /* Reset to normal font size for text content */
+  line-height: normal;
 }
 
 /* ==========================================================================
-   Scene 1 - Interactive Component
+   Scene 1 - Interactive Component with Enhanced Transitions
    ========================================================================== */
 
-.scene-1 {
+.scene-introdution {
   cursor: pointer;
+  overflow: hidden; /* Prevent any overflow during transitions */
 }
 
 .component {
@@ -89,8 +120,18 @@ button:focus-visible, a:focus-visible {
   width: 702px;
   height: 110px;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out, width 0.8s ease-in-out, left 0.8s ease-in-out;
+  transition: 
+    opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+    width 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+    height 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
   pointer-events: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
 
 .component.visible {
@@ -100,75 +141,52 @@ button:focus-visible, a:focus-visible {
 
 .component.expanded {
   width: 100%;
-  left: 50%;
 }
 
-/* Vector elements in component */
+/* Enhanced vertical layout transition */
+.component.vertical {
+  flex-direction: column;
+  height: 80%;
+  width: 200px;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Vector elements with enhanced transitions */
 .vector-element {
-  position: absolute;
+  position: relative;
+  transition: 
+    all 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), /* Bouncy effect */
+    opacity 0.5s ease;
+  margin: 5px;
+  max-width: 60px;
+  max-height: 60px;
+  transform-origin: center center;
 }
 
-.vector-1 {
-  width: 8.53%;
-  height: 76.50%;
-  top: 18.67%;
-  left: 0;
+/* Add staggered animation for vector elements when vertical */
+.component.vertical .vector-element:nth-child(1) { transition-delay: 0.05s; }
+.component.vertical .vector-element:nth-child(2) { transition-delay: 0.1s; }
+.component.vertical .vector-element:nth-child(3) { transition-delay: 0.15s; }
+.component.vertical .vector-element:nth-child(4) { transition-delay: 0.2s; }
+.component.vertical .vector-element:nth-child(5) { transition-delay: 0.25s; }
+.component.vertical .vector-element:nth-child(6) { transition-delay: 0.3s; }
+.component.vertical .vector-element:nth-child(7) { transition-delay: 0.35s; }
+.component.vertical .vector-element:nth-child(8) { transition-delay: 0.4s; }
+.component.vertical .vector-element:nth-child(9) { transition-delay: 0.45s; }
+
+/* Hover effects for vector elements */
+.vector-element:hover {
+  transform: scale(1.1);
 }
 
-.vector-2 {
-  width: 9.51%;
-  height: 81.34%;
-  top: 18.66%;
-  left: 22.72%;
+/* Add subtle rotation during transition */
+.component.vertical .vector-element {
+  transform: rotate(5deg);
 }
 
-.vector-3 {
-  width: 9.29%;
-  height: 88.41%;
-  top: 0;
-  left: 33.84%;
-}
-
-.vector-4 {
-  width: 9.50%;
-  height: 89.91%;
-  top: 10.09%;
-  left: 44.73%;
-}
-
-.vector-5 {
-  width: 8.52%;
-  height: 79.37%;
-  top: 17.23%;
-  left: 12.59%;
-}
-
-.vector-6 {
-  width: 8.52%;
-  height: 79.37%;
-  top: 10.13%;
-  left: 80.06%;
-}
-
-.vector-7 {
-  width: 8.43%;
-  height: 82.46%;
-  top: 13.82%;
-  left: 68.26%;
-}
-
-.vector-8 {
-  width: 9.56%;
-  height: 71.61%;
-  top: 19.19%;
-  left: 90.44%;
-}
-
-.vector-9 {
-  width: 8.21%;
-  height: 93.85%;
-  top: 6.15%;
-  left: 57.98%;
+.component:not(.vertical) .vector-element {
+  transform: rotate(0deg);
 }
 
 /* ==========================================================================
@@ -201,7 +219,7 @@ button:focus-visible, a:focus-visible {
 
 .text-content {
   flex: 1;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Manrope', sans-serif;
   font-weight: 400;
   color: #beb8b8;
   font-size: 36px;
@@ -262,6 +280,16 @@ button:focus-visible, a:focus-visible {
   width: 209px;
   height: 35px;
   display: flex;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  transform: scale(1.05);
+}
+
+.close-button:active {
+  transform: scale(0.95);
 }
 
 .close-text {
@@ -277,6 +305,11 @@ button:focus-visible, a:focus-visible {
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover .close-text {
+  color: #ffffff;
 }
 
 /* ==========================================================================
@@ -289,6 +322,9 @@ button:focus-visible, a:focus-visible {
   background-color: #ffffff;
   position: relative;
   transition: background-color 1s ease;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
 }
 
 .scene-4.orange-bg {
@@ -303,6 +339,8 @@ button:focus-visible, a:focus-visible {
   background-position: 50% 50%;
   position: relative;
   z-index: 1;
+  display: block;
+  margin: 0;
 }
 
 .rain-container {
@@ -346,7 +384,6 @@ button:focus-visible, a:focus-visible {
 
 .gallery-grid {
   width: 100%;
-  height: 1024px;
   position: relative;
   background-color: #7be0ff;
   display: grid;
@@ -354,12 +391,23 @@ button:focus-visible, a:focus-visible {
   grid-template-rows: repeat(3, 1fr);
   gap: 20px;
   padding: 64px;
+  font-size: 16px; /* Reset font size for grid layout */
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  margin: 0;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  border-radius: 4px;
+}
+
+.gallery-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -370,6 +418,16 @@ button:focus-visible, a:focus-visible {
 @media (max-width: 768px) {
   .component {
     width: 90%;
+  }
+  
+  .component.vertical {
+    height: 70%;
+    width: 120px;
+  }
+  
+  .vector-element {
+    max-width: 40px;
+    max-height: 40px;
   }
   
   .text-content {
@@ -385,8 +443,19 @@ button:focus-visible, a:focus-visible {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    height: auto;
     padding: 20px;
+    gap: 10px;
+  }
+  
+  .scene-4-image {
+    height: auto;
+    min-height: 50vh;
+  }
+  
+  .close-button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -394,6 +463,47 @@ button:focus-visible, a:focus-visible {
 @media (min-width: 769px) and (max-width: 1024px) {
   .gallery-grid {
     padding: 40px;
+    gap: 15px;
+  }
+  
+  .scene-4-image {
+    height: auto;
+    min-height: 70vh;
+  }
+  
+  .component.vertical {
+    height: 75%;
+    width: 160px;
+  }
+  
+  .vector-element {
+    max-width: 50px;
+    max-height: 50px;
+  }
+  
+  .text-content {
+    font-size: 30px;
+    line-height: 45px;
+  }
+}
+
+/* Large screens adjustments */
+@media (min-width: 1025px) {
+  .scene-4-image {
+    height: auto;
+    min-height: 90vh;
+  }
+  
+  .gallery-grid {
+    padding: 64px;
+    gap: 20px;
+  }
+}
+
+/* High-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .text-content {
+    -webkit-font-smoothing: subpixel-antialiased;
   }
 }
 

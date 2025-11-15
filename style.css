@@ -54,7 +54,36 @@ html, body {
   font-size: 0; /* Prevents inline element spacing */
 }
 
+/*==============================================================================
+  4. COMMON SCENE COMPONENTS
+==============================================================================*/
 
+/* Scene container */
+.scene-container {
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  display: block;
+}
+
+/* Background images */
+.scene-background {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  vertical-align: bottom;
+}
+
+/* Reset font-size for text elements */
+.text-block, .close-button, .component {
+  font-size: 16px;
+  line-height: normal;
+}
 
 /*==============================================================================
   5. SCENE 1 - INTRODUCTION WITH INTERACTIVE TITLE

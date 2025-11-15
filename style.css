@@ -1,0 +1,408 @@
+/* ==========================================================================
+   Base Styles and Reset
+   ========================================================================== */
+
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css?family=Poppins:400");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+/* Custom font */
+@font-face {
+  font-family: "Impact-Regular";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/6247dc035a1f4749cec51e2c/fonts/impact.ttf") format("truetype");
+}
+
+/* Base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Accessibility focus styles */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+/* ==========================================================================
+   Layout Container
+   ========================================================================== */
+
+.WEB-fixed {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   Scene Components
+   ========================================================================== */
+
+/* Common scene styles */
+.scene-container {
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Scene images */
+.scene-background {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Scene 1 - Interactive Component
+   ========================================================================== */
+
+.scene-1 {
+  cursor: pointer;
+}
+
+.component {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 702px;
+  height: 110px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, width 0.8s ease-in-out, left 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.component.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.component.expanded {
+  width: 100%;
+  left: 50%;
+}
+
+/* Vector elements in component */
+.vector-element {
+  position: absolute;
+}
+
+.vector-1 {
+  width: 8.53%;
+  height: 76.50%;
+  top: 18.67%;
+  left: 0;
+}
+
+.vector-2 {
+  width: 9.51%;
+  height: 81.34%;
+  top: 18.66%;
+  left: 22.72%;
+}
+
+.vector-3 {
+  width: 9.29%;
+  height: 88.41%;
+  top: 0;
+  left: 33.84%;
+}
+
+.vector-4 {
+  width: 9.50%;
+  height: 89.91%;
+  top: 10.09%;
+  left: 44.73%;
+}
+
+.vector-5 {
+  width: 8.52%;
+  height: 79.37%;
+  top: 17.23%;
+  left: 12.59%;
+}
+
+.vector-6 {
+  width: 8.52%;
+  height: 79.37%;
+  top: 10.13%;
+  left: 80.06%;
+}
+
+.vector-7 {
+  width: 8.43%;
+  height: 82.46%;
+  top: 13.82%;
+  left: 68.26%;
+}
+
+.vector-8 {
+  width: 9.56%;
+  height: 71.61%;
+  top: 19.19%;
+  left: 90.44%;
+}
+
+.vector-9 {
+  width: 8.21%;
+  height: 93.85%;
+  top: 6.15%;
+  left: 57.98%;
+}
+
+/* ==========================================================================
+   Scene 2 - Text Elements
+   ========================================================================== */
+
+.kim-element {
+  position: absolute;
+}
+
+.kim-primary {
+  height: 7.08%;
+  top: 52.60%;
+  left: calc(50.00% + 1px);
+  width: 115px;
+}
+
+.kim-secondary {
+  width: 0;
+  height: 17.45%;
+  top: 36.33%;
+  left: 50.00%;
+}
+
+/* Text blocks */
+.text-block {
+  position: absolute;
+  display: flex;
+}
+
+.text-content {
+  flex: 1;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #beb8b8;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: -0.68px;
+  line-height: 54px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.text-content:hover {
+  color: #000000;
+}
+
+/* Text block positioning */
+.text-block-1 {
+  top: 268px;
+  left: 614px;
+  width: 258px;
+  height: 96px;
+}
+
+.text-block-2 {
+  top: 626px;
+  left: 602px;
+  width: 281px;
+  height: 96px;
+}
+
+.text-block-3 {
+  top: 437px;
+  left: 845px;
+  width: 233px;
+  height: 96px;
+}
+
+.text-block-4 {
+  top: 437px;
+  left: 425px;
+  width: 259px;
+  height: 96px;
+}
+
+/* ==========================================================================
+   Scene 3 - Close Button
+   ========================================================================== */
+
+.scene-3 {
+  background-image: url(https://c.animaapp.com/3CWDI9gU/img/scene-3-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.close-button {
+  position: absolute;
+  top: 655px;
+  left: 720px;
+  width: 209px;
+  height: 35px;
+  display: flex;
+}
+
+.close-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 209px;
+  font-family: "Impact-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffccdb;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+/* ==========================================================================
+   Scene 4 - Rain Effect
+   ========================================================================== */
+
+.scene-4 {
+  width: 100%;
+  display: flex;
+  background-color: #ffffff;
+  position: relative;
+  transition: background-color 1s ease;
+}
+
+.scene-4.orange-bg {
+  background-color: #ff8c00;
+}
+
+.scene-4-image {
+  width: 100%;
+  height: 1024px;
+  background-image: url(https://c.animaapp.com/3CWDI9gU/img/image-5.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.rain-container.active {
+  opacity: 1;
+}
+
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(174, 194, 224, 0), rgba(174, 194, 224, 0.8));
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1024px);
+    opacity: 0.3;
+  }
+}
+
+/* ==========================================================================
+   Scene 5 - Gallery Grid
+   ========================================================================== */
+
+.gallery-grid {
+  width: 100%;
+  height: 1024px;
+  position: relative;
+  background-color: #7be0ff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  padding: 64px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .component {
+    width: 90%;
+  }
+  
+  .text-content {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  
+  .text-block {
+    width: 80%;
+    left: 10%;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: auto;
+    padding: 20px;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-grid {
+    padding: 40px;
+  }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

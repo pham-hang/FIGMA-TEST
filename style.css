@@ -379,19 +379,49 @@ button:focus-visible, a:focus-visible {
 }
 
 /* ==========================================================================
-   Scene 5 - Gallery Grid
+   Scene 5 - Interactive Draggable Gallery with Enhanced Swap Animation
    ========================================================================== */
 
-.gallery-grid {
+.gallery-container {
   width: 100%;
   position: relative;
   background-color: #7be0ff;
+  padding: 64px;
+  font-size: 16px;
+  min-height: 600px;
+}
+
+.gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 20px;
-  padding: 64px;
-  font-size: 16px; /* Reset font size for grid layout */
+  transition: opacity 1s ease;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: grab;
+  border-radius: 4px;
+  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  will-change: transform; /* Performance optimization for animations */
+  user-select: none; /* Prevent text selection during drag */
+  -webkit-user-drag: element; /* Better drag behavior on Safari */
+}
+
+.gallery-item.dragging {
+  cursor: grabbing;
+  z-index: 100;
+  opacity: 0.8;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item.drag-over {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(0.95);
 }
 
 .gallery-image {
@@ -400,15 +430,94 @@ button:focus-visible, a:focus-visible {
   object-fit: cover;
   display: block;
   margin: 0;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.5s ease;
   border-radius: 4px;
+  pointer-events: none; /* Ensures drag events go to parent */
 }
 
-.gallery-image:hover {
+.gallery-item:hover .gallery-image {
   transform: scale(1.03);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
 }
+
+/* Animation for disappearing images */
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(15deg);
+  }
+}
+
+.gallery-item.correct {
+  animation: disappear 1s forwards;
+}
+
+.gallery-success-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.gallery-success-message.visible {
+  opacity: 1;
+}
+
+/* Add a subtle hint for users */
+.gallery-container::before {
+  content: "Drag to arrange";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 20px;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+  }
+  
+  .gallery-success-message {
+    font-size: 32px;
+  }
+}
+
+/* Touch device enhancements */
+@media (hover: none) {
+  .gallery-item {
+    cursor: move;
+  }
+  
+  .gallery-container::before {
+    content: "Touch and hold to drag";
+  }
+}
+
 
 /* ==========================================================================
    Responsive Media Queries

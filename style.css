@@ -448,7 +448,7 @@ button:focus-visible, a:focus-visible {
 .gallery-container {
   width: 100%;
   position: relative;
-  background-color: #7be0ff;
+  background-color: #ffffff;
   padding: 64px;
   font-size: 16px;
   min-height: 600px;
@@ -548,7 +548,6 @@ button:focus-visible, a:focus-visible {
 
 /* User instructions */
 .gallery-container::before {
-  content: "Drag to arrange";
   position: absolute;
   top: 20px;
   left: 50%;

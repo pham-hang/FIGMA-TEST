@@ -529,4 +529,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return array;
   }
+  
 });

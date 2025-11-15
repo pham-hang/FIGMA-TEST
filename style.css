@@ -104,12 +104,13 @@ button:focus-visible, a:focus-visible {
 }
 
 /* ==========================================================================
-   Scene 1 - Interactive Component with Enhanced Transitions
+   Scene 1 - Interactive Component with Ultra-Smooth Transitions
    ========================================================================== */
 
 .scene-introdution {
   cursor: pointer;
   overflow: hidden; /* Prevent any overflow during transitions */
+  perspective: 1000px; /* Add perspective for 3D transitions */
 }
 
 .component {
@@ -121,17 +122,19 @@ button:focus-visible, a:focus-visible {
   height: 110px;
   opacity: 0;
   transition: 
-    opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
-    width 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    height 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 15px;
+  padding: 20px;
+  will-change: transform, opacity, width, height; /* Performance optimization */
+  transform-style: preserve-3d; /* Enable 3D transformations */
 }
 
 .component.visible {
@@ -155,16 +158,18 @@ button:focus-visible, a:focus-visible {
 .vector-element {
   position: relative;
   transition: 
-    all 1s cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), /* Bouncy effect */
-    opacity 0.5s ease;
+    all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.8s ease;
   margin: 5px;
   max-width: 60px;
   max-height: 60px;
   transform-origin: center center;
+  will-change: transform, opacity; /* Performance optimization */
+  backface-visibility: hidden; /* Prevent flickering during animations */
 }
 
-/* Add staggered animation for vector elements when vertical */
+/* Add staggered animation for vector elements when vertical with longer delays */
 .component.vertical .vector-element:nth-child(1) { transition-delay: 0.05s; }
 .component.vertical .vector-element:nth-child(2) { transition-delay: 0.1s; }
 .component.vertical .vector-element:nth-child(3) { transition-delay: 0.15s; }
@@ -175,19 +180,58 @@ button:focus-visible, a:focus-visible {
 .component.vertical .vector-element:nth-child(8) { transition-delay: 0.4s; }
 .component.vertical .vector-element:nth-child(9) { transition-delay: 0.45s; }
 
+/* Return transition with different timing */
+.component:not(.vertical) .vector-element:nth-child(1) { transition-delay: 0.4s; }
+.component:not(.vertical) .vector-element:nth-child(2) { transition-delay: 0.35s; }
+.component:not(.vertical) .vector-element:nth-child(3) { transition-delay: 0.3s; }
+.component:not(.vertical) .vector-element:nth-child(4) { transition-delay: 0.25s; }
+.component:not(.vertical) .vector-element:nth-child(5) { transition-delay: 0.2s; }
+.component:not(.vertical) .vector-element:nth-child(6) { transition-delay: 0.15s; }
+.component:not(.vertical) .vector-element:nth-child(7) { transition-delay: 0.1s; }
+.component:not(.vertical) .vector-element:nth-child(8) { transition-delay: 0.05s; }
+.component:not(.vertical) .vector-element:nth-child(9) { transition-delay: 0s; }
+
 /* Hover effects for vector elements */
 .vector-element:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(5deg);
+  z-index: 10;
 }
 
-/* Add subtle rotation during transition */
+/* Add subtle rotation and translation during transition */
 .component.vertical .vector-element {
-  transform: rotate(5deg);
+  transform: translateY(10px) rotate(5deg);
 }
 
 .component:not(.vertical) .vector-element {
-  transform: rotate(0deg);
+  transform: translateY(0) rotate(0deg);
 }
+
+/* Add transition indicator */
+.scene-introdution::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.scene-introdution:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(5px);
+}
+
+.component.vertical + .scene-introdution::after {
+  transform: translateX(-50%) rotate(180deg);
+}
+
 
 /* ==========================================================================
    Scene 2 - Text Elements
